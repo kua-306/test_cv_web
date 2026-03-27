@@ -76,7 +76,7 @@ async function clickAndWait(page, selector) {
 
 async function expectAlert(page) {
   const popup = page.locator('.swal2-popup');
-  await popup.waitFor({ state: 'visible', timeout: 10000 });
+  // await popup.waitFor({ state: 'visible', timeout: 10000 });
   await expect(popup).toBeVisible();
   return popup;
 }
@@ -131,8 +131,7 @@ test('duplicate register shows an error and leaves register mode visible', async
   await clickAndWait(page, '#tab-register');
   await page.locator('#reg-username').fill('thune@gmail.com');
   await page.locator('#reg-password').fill('DuplicateUser123!');
-  await page.locator('#form-register button[type="submit"]').click(); await page.waitForTimeout(1000);
-
+  await page.locator('#form-register button[type="submit"]').click();
   await expectAlert(page);
   await expect(page.locator('#form-register')).toBeVisible();
   await dismissAlert(page);
