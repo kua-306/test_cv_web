@@ -51,14 +51,21 @@ async function gotoApp(page) {
 }
 
 async function restoreAuthenticatedSession(page) {
-  // Fix nhẹ: Kiểm tra token trước khi nạp
-  if (!authMeta?.accessToken) {
-    console.warn('⚠️ Cảnh báo: auth-meta.json chưa có token.');
-    return;
+  // Đọc lại file ngay tại đây để lấy Token mới nhất vừa được ghi
+  const currentAuth = JSON.parse(fs.readFileSync(AUTH_META_PATH, 'utf8'));
+
+  if (!currentAuth?.accessToken) {
+    console.error('❌ LỖI: Token vẫn rỗng, không thể vào App!');
+    throw new Error('Missing access token');
   }
+
   await page.evaluate((token) => {
+    // Nạp token thật vào localStorage của trình duyệt máy ảo
     window.localStorage.setItem('access_token', token);
-  }, authMeta.accessToken);
+    console.log('✅ Đã nạp Token vào LocalStorage');
+  }, currentAuth.accessToken);
+
+  // Load lại trang để App nhận Token
   await page.reload({ waitUntil: 'domcontentloaded' });
   await waitForNetworkIdle(page);
 }
@@ -130,29 +137,29 @@ test('invalid login shows an error', async ({ page }) => {
   await dismissAlert(page);
 });
 
-// test('duplicate register shows an error and leaves register mode visible', async ({ page }) => {
-//   await gotoApp(page);
+test('duplicate register shows an error and leaves register mode visible', async ({ page }) => {
+  await gotoApp(page);
 
-//   // 1. Đảm bảo chắc chắn là đã bấm vào tab Đăng ký
-//   const tabReg = page.locator('#tab-register');
-//   await tabReg.click({ force: true });
-//   // Đợi 1 chút cho cái Form hiện ra hẳn
-//   await page.waitForTimeout(500);
+  // 1. Đảm bảo chắc chắn là đã bấm vào tab Đăng ký
+  const tabReg = page.locator('#tab-register');
+  await tabReg.click({ force: true });
+  // Đợi 1 chút cho cái Form hiện ra hẳn
+  await page.waitForTimeout(500);
 
-//   // 2. Điền thông tin
-//   await page.locator('#reg-username').fill('thune@gmail.com');
-//   await page.locator('#reg-password').fill('DuplicateUser123!');
+  // 2. Điền thông tin
+  await page.locator('#reg-username').fill('thune@gmail.com');
+  await page.locator('#reg-password').fill('DuplicateUser123!');
 
-//   // 3. Bấm nút Submit (Dùng force để bỏ qua mọi vật cản)
-//   const submitBtn = page.locator('#form-register button[type="submit"]');
-//   await expect(submitBtn).toBeVisible(); // Kiểm tra nút có hiện hồn không đã
-//   await submitBtn.click({ force: true });
+  // 3. Bấm nút Submit (Dùng force để bỏ qua mọi vật cản)
+  const submitBtn = page.locator('#form-register button[type="submit"]');
+  await expect(submitBtn).toBeVisible(); // Kiểm tra nút có hiện hồn không đã
+  await submitBtn.click({ force: true });
 
-//   // const alert = page.locator('.swal2-popup');
-//   await expect(alert).toBeVisible({ timeout: 15000 });
+  // const alert = page.locator('.swal2-popup');
+  await expect(alert).toBeVisible({ timeout: 15000 });
 
-//   await page.locator('.swal2-confirm').click();
-// });
+  await page.locator('.swal2-confirm').click();
+});
 test('invalid file upload shows an error and does not render prediction results', async ({ page }) => {
   await gotoProtectedApp(page);
 
