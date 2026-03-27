@@ -118,8 +118,13 @@ test('invalid login shows an error', async ({ page }) => {
   await page.locator('#login-username').fill('thune@gmail.com');
   await page.locator('#login-password').fill('wrong-password');
   await page.locator('#form-login button[type="submit"]').click();
-
-  await expectAlert(page);
+  try {
+    const alert = page.locator('.swal2-popup');
+    await expect(alert).toBeVisible({ timeout: 5000 });
+  } catch (e) {
+    await page.screenshot({ path: 'output/error-popup.png' });
+    throw e;
+  }
   // await expect(page.getByText('Thất bại', { exact: false })).toBeVisible();
   await expect(page.locator('#auth-screen')).toBeVisible();
   await dismissAlert(page);
@@ -132,7 +137,13 @@ test('duplicate register shows an error and leaves register mode visible', async
   await page.locator('#reg-username').fill('thune@gmail.com');
   await page.locator('#reg-password').fill('DuplicateUser123!');
   await page.locator('#form-register button[type="submit"]').click();
-  await expectAlert(page);
+  try {
+    const alert = page.locator('.swal2-popup');
+    await expect(alert).toBeVisible({ timeout: 5000 });
+  } catch (e) {
+    await page.screenshot({ path: 'output/error-popup.png' });
+    throw e;
+  }
   await expect(page.locator('#form-register')).toBeVisible();
   await dismissAlert(page);
 });
