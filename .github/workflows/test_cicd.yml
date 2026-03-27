@@ -24,8 +24,12 @@ jobs:
         run: |
           cd api
           python -m uvicorn api:app --host 127.0.0.1 --port 8000 &
-          sleep 300
-
+      - name: Wait for API to be ready
+        # Đợi cổng 8000 phản hồi, tối đa 10 phút (600000ms)
+        run: npx wait-on http://127.0.0.1:8000 --timeout 600000
+      - name: Show API logs on failure
+        if: failure()
+        run: cat api/server.log
       - name: Run Test Unhappy case
         run: |
           npx playwright test tests/unhappy.spec.js
