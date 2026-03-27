@@ -110,14 +110,14 @@ test('[Registration] Create real user for subsequent tests', async ({ page }) =>
   await page.locator('#form-register button[type="submit"]').click();
 
   // Đợi quay về login là thành công
-  // await expect(page.locator('#form-login')).toBeVisible();
+  await expect(page.locator('#form-login')).toBeVisible();
 });
 
 test('invalid login shows an error', async ({ page }) => {
   await gotoApp(page);
   await page.locator('#login-username').fill('thune@gmail.com');
   await page.locator('#login-password').fill('wrong-password');
-  await page.locator('#form-register button[type="submit"]').click();
+  await page.locator('#form-login button[type="submit"]').click();
 
   await expectAlert(page);
   await expect(page.getByText('Thất bại', { exact: false })).toBeVisible();
