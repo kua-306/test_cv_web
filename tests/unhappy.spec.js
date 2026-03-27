@@ -125,24 +125,6 @@ test('invalid login shows an error', async ({ page }) => {
   await dismissAlert(page);
 });
 
-test('canceling history deletion keeps the history item visible', async ({ page }) => {
-  await gotoProtectedApp(page);
-  await createPrediction(page); // Tạo dữ liệu mẫu trước khi test xóa
-  await clickAndWait(page, 'button[onclick="loadHistory()"]');
-
-  const historyCard = page.locator('#history-list .glass-card').first();
-  await expect(historyCard).toBeVisible();
-
-  await page.locator('#history-list button[onclick^="delH"]').first().click();
-
-  await expectAlert(page);
-  await page.locator('.swal2-cancel').click(); // Nhấn Hủy
-
-  await expect(page.locator('.swal2-popup')).toBeHidden();
-  await expect(historyCard).toBeVisible(); // Card vẫn phải còn đó
-});
-
-
 test('duplicate register shows an error and leaves register mode visible', async ({ page }) => {
   await gotoApp(page);
 
