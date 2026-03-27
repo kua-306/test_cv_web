@@ -8,6 +8,7 @@ const ROOT_DIR = path.resolve(__dirname, '..');
 // Tự động tạo URL file:// phù hợp với mọi hệ điều hành (Windows/Linux)
 const BASE_URL = `file://${path.join(ROOT_DIR, 'app.html')}`;
 const SAMPLE_IMAGE_PATH = path.join(ROOT_DIR, '456.jpg');
+const OUTPUT_DIR = path.join(ROOT_DIR, 'output');
 const INVALID_UPLOAD_PATH = path.join(ROOT_DIR, 'package.json');
 const AUTH_META_PATH = path.join(ROOT_DIR, 'output', 'auth-meta.json');
 
