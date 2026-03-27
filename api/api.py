@@ -24,7 +24,7 @@ from database import get_db,engine
 from cloud import upload_image
 from auth import get_password_hash,verify_password,create_access_token,verify_token
 from schemas import UserBase,History,Token
-from checkanimal import get_embedding,is_same_animal
+# from checkanimal import get_embedding,is_same_animal
 
 
 
