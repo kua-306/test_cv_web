@@ -17,7 +17,6 @@ const authMeta = fs.existsSync(AUTH_META_PATH)
   : null;
 
 test.use({ storageState: `${path.join(ROOT_DIR, 'output', 'auth.json')}` });
-test.use({ storageState: 'output/utput/auth.json' });
 test.describe.configure({ mode: 'serial' });
 
 function findScenario(slugPrefix, type) {
