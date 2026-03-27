@@ -29,7 +29,7 @@ jobs:
           cat server.log
       - name: Run Test Unhappy case
         run: |
-          npx playwright install
+          npx playwright install --with-deps chromium
           npx playwright test tests/unhappy.spec.js
       - name: Run Test Happy case
         run: |
