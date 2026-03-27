@@ -6,6 +6,8 @@ python-dotenv
 pydantic
 slowapi
 cloudinary
+passlib[bcrypt]
+bcrypt
 # --- Database (Cần thiết để lưu kết quả nhận diện) ---
 sqlalchemy
 aiosqlite
