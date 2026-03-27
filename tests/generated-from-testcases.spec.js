@@ -79,6 +79,21 @@ const predictResultsScenario = findScenario('predict-results-', 'button-click');
 const historyScenario = findScenario('history-', 'navigation');
 const historyPopulatedScenario = findScenario('history-populated-', 'navigation');
 
+test('[Registration] Create real user for subsequent tests', async ({ page }) => {
+  await gotoApp(page);
+
+  await clickAndWait(page, '#tab-register');
+  await page.locator('#reg-username').fill('thune@gmail.com');
+  await page.locator('#reg-password').fill('ntltcua3006');
+
+  // Nhấn nút submit đăng ký (selector dựa trên form-register của bạn)
+  await page.locator('#form-register button[type="submit"]').click();
+
+  // Đợi một chút để DB kịp ghi và hiện thông báo thành công hoặc quay về form login
+  await page.waitForTimeout(1000);
+  await expect(page.locator('#form-login')).toBeVisible();
+});
+
 test(buildTestTitle('login', loginScenario, 'Login form accepts credentials entry'), async ({ page }) => {
   await gotoApp(page);
 
