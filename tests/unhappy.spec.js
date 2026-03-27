@@ -119,7 +119,7 @@ test('invalid login shows an error', async ({ page }) => {
   await clickAndWait(page, '#form-login button[type="submit"]');
 
   await expectAlert(page);
-  await expect(page.getByText('Thất bại'), { exact: false }).toBeVisible();
+  await expect(page.getByText('Thất bại', { exact: false })).toBeVisible();
   await expect(page.locator('#auth-screen')).toBeVisible();
   await dismissAlert(page);
 });
