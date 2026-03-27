@@ -24,6 +24,7 @@ from database import get_db,engine
 from cloud import upload_image
 from auth import get_password_hash,verify_password,create_access_token,verify_token
 from schemas import UserBase,History,Token
+from checkanimal import get_embedding,is_same_animal
 
 
 
@@ -151,6 +152,17 @@ async def predict(request: Request,file: UploadFile = File(...),db: Session = De
         predictions = list(predictions_dict.values())[0]
         probs = predictions.numpy()[0]
         top_indices = np.argsort(probs)[::-1]
+        # best_index = top_indices[0]
+        # THRESHOLD = 0.8
+        # best_prob = probs[best_index]
+
+        # # Nếu độ tin cậy thấp thì không trả kết quả
+        # if best_prob < THRESHOLD:
+        #     return {
+        #         "success": False,
+        #         "message": "Độ tin cậy quá thấp, không thể dự đoán"
+        #     }
+        results = []
         results = []
         for i in top_indices:
             percentage = float(probs[i]) * 100

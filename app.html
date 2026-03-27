@@ -3,173 +3,265 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hệ Thống Nhận Diện Động Vật AI</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Computer Vision</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .fade-in {
-            animation: fadeIn 0.4s ease-out forwards;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#a855f7',
+                        glass: 'rgba(255, 255, 255, 0.7)',
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'scan': 'scan 2s linear infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        scan: {
+                            '0%': { top: '0%' },
+                            '50%': { top: '100%' },
+                            '100%': { top: '0%' },
+                        }
+                    }
+                }
             }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
-
-        .bg-gradient-brand {
-            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-        }
-    </style>
+    </script>
 </head>
 
-<body class="bg-gray-50 min-h-screen flex flex-col text-gray-800">
+<body class="text-slate-800 antialiased h-screen flex flex-col">
 
-    <div id="auth-screen" class="flex-1 flex flex-col justify-center items-center p-4 bg-gray-100">
-        <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md fade-in border border-gray-100">
-            <div class="text-center mb-6">
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div id="auth-screen" class="flex-1 flex flex-col justify-center items-center p-0 sm:p-6 w-full max-w-lg mx-auto">
+        <!-- Giảm padding của card từ p-8 xuống p-5 trên mobile, sm:p-8 trên desktop -->
+        <div class="glass-card rounded-2xl sm:rounded-3xl p-2 sm:p-8 w-full fade-enter">
+            <!-- Giảm margin-bottom từ mb-8 xuống mb-5 -->
+            <div class="text-center mb-2 sm:mb-6">
+                <!-- Giảm kích thước logo từ w-20 h-20 xuống w-14 h-14, giảm margin -->
                 <div
-                    class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 text-indigo-600 mb-4">
-                    <i class="fas fa-paw text-3xl"></i>
+                    class="w-5 h-5 sm:w-10 sm:h-10 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-2xl mx-auto flex items-center justify-center shadow-lg shadow-indigo-500/30 mb-2 sm:mb-4 text-white">
+                    <i class="fas fa-paw text-2xl sm:text-4xl"></i>
                 </div>
-                <h1 class="text-3xl font-bold text-gray-900">Animal AI</h1>
+                <!-- Giảm cỡ chữ trên mobile -->
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Computer Vision</h1>
+                <p class="text-slate-500 text-xs sm:text-sm mt-1 font-medium">Nhận diện động vật</p>
             </div>
 
-            <div class="flex justify-center mb-6">
+            <!-- Giảm margin-bottom từ mb-6 xuống mb-4 -->
+            <div class="flex justify-center mb-2 sm:mb-4">
                 <div id="g_id_onload"
                     data-client_id="624401284648-qg4bapeb16go2ja2dujftalnjb53u0ka.apps.googleusercontent.com"
                     data-callback="handleGoogleCallback" data-auto_prompt="false">
                 </div>
-                <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"
-                    data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
+                <div class="g_id_signin" data-type="standard" data-size="large" data-theme="filled_blue"
+                    data-text="sign_in_with" data-shape="pill" data-logo_alignment="left" data-width="100%">
                 </div>
             </div>
 
-            <div class="relative flex py-2 items-center mb-4">
-                <div class="flex-grow border-t border-gray-300"></div>
-                <span class="flex-shrink-0 mx-4 text-gray-400 text-xs">Hoặc đăng nhập bằng tài khoản</span>
-                <div class="flex-grow border-t border-gray-300"></div>
+            <!-- Giảm margin-bottom từ mb-6 xuống mb-4 -->
+            <div class="relative flex py-2 items-center mb-2 sm:mb-6">
+                <div class="flex-grow border-t border-gray-300/50"></div>
+                <span
+                    class="flex-shrink-0 mx-3 text-gray-400 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">Hoặc</span>
+                <div class="flex-grow border-t border-gray-300/50"></div>
             </div>
 
-            <div class="flex bg-gray-100 p-1 rounded-lg mb-4">
+            <!-- Giảm margin-bottom cuối cùng -->
+            <div class="flex p-1 bg-gray-100/50 rounded-xl mb-2 sm:mb-6 backdrop-blur-sm">
                 <button onclick="switchAuthMode('login')" id="tab-login"
-                    class="flex-1 py-2 rounded-md text-sm font-semibold shadow bg-white text-indigo-600 transition-all">Đăng
-                    nhập</button>
+                    class="flex-1 py-2 sm:py-2.5 rounded-lg text-sm font-bold shadow-sm bg-white text-indigo-600 transition-all btn-press">
+                    Đăng nhập
+                </button>
                 <button onclick="switchAuthMode('register')" id="tab-register"
-                    class="flex-1 py-2 rounded-md text-sm font-medium text-gray-500 hover:text-indigo-600 transition-all">Đăng
-                    ký</button>
+                    class="flex-1 py-2 sm:py-2.5 rounded-lg text-sm font-medium text-gray-500 hover:text-indigo-600 transition-all btn-press">
+                    Đăng ký
+                </button>
             </div>
 
             <form id="form-login" onsubmit="handleLogin(event)" class="space-y-4">
-                <input type="text" id="login-username"
-                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
-                    placeholder="Tên tài khoản" required>
-                <input type="password" id="login-password"
-                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none"
-                    placeholder="Mật khẩu" required>
+                <div>
+                    <input type="text" id="login-username"
+                        class="input-modern w-full px-5 py-3.5 rounded-xl text-sm font-medium outline-none placeholder-gray-400 border border-gray-300 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                        placeholder="Tên tài khoản" required>
+                </div>
+                <div>
+                    <input type="password" id="login-password"
+                        class="input-modern w-full px-5 py-3.5 rounded-xl text-sm font-medium outline-none placeholder-gray-400 border border-gray-300 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                        placeholder="Mật khẩu" required>
+                </div>
                 <button type="submit"
-                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 rounded-lg transition-all">Đăng
-                    Nhập</button>
+                    class="w-full bg-slate-900 text-white font-bold py-3.5 rounded-xl hover:bg-slate-800 transition-all shadow-lg btn-press flex justify-center items-center gap-2">
+                    <span>Truy cập ngay</span> <i class="fas fa-arrow-right"></i>
+                </button>
             </form>
 
             <form id="form-register" onsubmit="handleRegister(event)" class="space-y-4 hidden">
                 <input type="text" id="reg-username"
-                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
-                    placeholder="Tên tài khoản mới" required>
+                    class="input-modern w-full px-5 py-3.5 rounded-xl text-sm font-medium outline-none border border-gray-300 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                    placeholder="Chọn tên tài khoản" required>
                 <input type="password" id="reg-password"
-                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
-                    placeholder="Mật khẩu" required>
+                    class="input-modern w-full px-5 py-3.5 rounded-xl text-sm font-medium outline-none border border-gray-300 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                    placeholder="Đặt mật khẩu" required>
                 <button type="submit"
-                    class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 rounded-lg transition-all">Đăng
-                    Ký</button>
+                    class="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-emerald-500/30 btn-press">
+                    Tạo tài khoản mới
+                </button>
             </form>
         </div>
     </div>
 
-    <div id="main-screen" class="hidden flex-col min-h-screen bg-gray-50">
-        <nav class="bg-white shadow-md sticky top-0 z-50">
-            <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
-                <div class="flex items-center text-indigo-600 font-bold text-xl"><i class="fas fa-brain mr-2"></i>AI
-                    Recognition</div>
-                <div class="flex space-x-2">
-                    <button onclick="showAppSection('predict')" class="px-3 py-2 text-gray-600 hover:text-indigo-600"><i
-                            class="fas fa-camera"></i></button>
-                    <button onclick="loadHistory()" class="px-3 py-2 text-gray-600 hover:text-indigo-600"><i
-                            class="fas fa-history"></i></button>
-                    <button onclick="logout()" class="px-3 py-2 text-red-500"><i
-                            class="fas fa-sign-out-alt"></i></button>
+    <div id="main-screen" class="hidden flex-col h-full">
+        <nav class="glass-nav sticky top-0 z-50">
+            <div class="max-w-2xl mx-auto px-6 h-16 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white text-xs">
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <span class="font-extrabold text-lg text-slate-800 tracking-tight">My Pest</span>
+                </div>
+                <div class="flex items-center gap-1">
+                    <button onclick="showAppSection('predict')"
+                        class="w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-600 transition-colors">
+                        <i class="fas fa-camera text-lg"></i>
+                    </button>
+                    <button onclick="loadHistory()"
+                        class="w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-600 transition-colors">
+                        <i class="fas fa-history text-lg"></i>
+                    </button>
+                    <div class="w-px h-6 bg-gray-200 mx-1"></div>
+                    <button onclick="logout()"
+                        class="w-10 h-10 rounded-full hover:bg-red-50 text-red-500 transition-colors">
+                        <i class="fas fa-power-off"></i>
+                    </button>
                 </div>
             </div>
         </nav>
 
-        <div class="flex-1 w-full max-w-md mx-auto py-8 px-4 flex flex-col">
-            <div id="section-predict" class="bg-white rounded-2xl shadow-xl overflow-hidden fade-in">
-                <div class="bg-gradient-brand p-4 text-center text-white">
-                    <h2 class="font-bold">Phân Tích Ảnh</h2>
-                </div>
-                <div class="p-6">
-                    <div class="flex border-b mb-4">
+        <!-- Đã sửa: Tách phần cuộn (w-full) ra khỏi phần căn giữa (max-w-xl) -->
+        <div class="flex-1 w-full overflow-y-auto custom-scrollbar">
+
+            <!-- Đây là phần căn giữa nội dung -->
+            <div class="w-full max-w-xl mx-auto p-4 md:p-6">
+
+                <div id="section-predict" class="fade-enter pb-20">
+                    <!-- <div class="glass-card p-1 rounded-2xl flex mb-6">
                         <button id="tab-upload" onclick="switchInputMode('upload')"
-                            class="flex-1 pb-2 text-indigo-600 border-b-2 border-indigo-600 font-bold">Tải ảnh</button>
+                            class="flex-1 py-3 rounded-xl text-sm font-bold bg-white shadow text-indigo-600 transition-all duration-300">
+                            <i class="fas fa-image mr-2"></i>Tải Ảnh
+                        </button>
                         <button id="tab-camera" onclick="switchInputMode('camera')"
-                            class="flex-1 pb-2 text-gray-500">Camera</button>
-                    </div>
-                    <div id="mode-upload" class="block">
-                        <label
-                            class="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed rounded-xl cursor-pointer bg-indigo-50 hover:bg-indigo-100">
-                            <i class="fas fa-cloud-upload-alt text-3xl text-indigo-400 mb-2"></i>
-                            <span class="text-sm text-gray-500">Chọn ảnh</span>
-                            <input id="image-upload" type="file" class="hidden" accept="image/*" />
-                        </label>
-                    </div>
-                    <div id="mode-camera" class="hidden">
-                        <video id="video-feed" class="w-full h-48 bg-black rounded-lg mb-2" autoplay
-                            playsinline></video>
-                        <div class="flex space-x-2">
-                            <button id="btn-capture" class="flex-1 bg-indigo-600 text-white py-2 rounded">Chụp</button>
-                            <button id="btn-retake" class="hidden flex-1 bg-gray-500 text-white py-2 rounded">Chụp
-                                lại</button>
+                            class="flex-1 py-3 rounded-xl text-sm font-medium text-gray-500 hover:text-indigo-600 transition-all duration-300">
+                            <i class="fas fa-camera mr-2"></i>Live Cam
+                        </button>
+                    </div> -->
+
+                    <div class="glass-card rounded-3xl p-6 shadow-sm border border-white/60 relative overflow-hidden">
+
+                        <div id="mode-upload" class="block">
+                            <label
+                                class="group flex flex-col items-center justify-center w-full h-64 border-2 border-dashed border-indigo-200 rounded-2xl cursor-pointer bg-indigo-50/50 hover:bg-indigo-50 hover:border-indigo-400 transition-all duration-300 relative overflow-hidden">
+
+                                <div
+                                    class="absolute inset-0 bg-white/50 opacity-0 group-hover:opacity-100 transition-opacity">
+                                </div>
+
+                                <div id="upload-placeholder"
+                                    class="relative z-10 flex flex-col items-center transition-opacity duration-300">
+                                    <div
+                                        class="w-16 h-16 rounded-full bg-white shadow-sm flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                                        <i class="fas fa-cloud-upload-alt text-2xl text-indigo-500"></i>
+                                    </div>
+                                    <p class="text-sm font-bold text-gray-700">Tải ảnh lên</p>
+                                    <p class="text-xs text-gray-400 mt-1">Hỗ trợ JPG, PNG</p>
+                                </div>
+
+                                <img id="upload-box-img"
+                                    class="absolute inset-0 w-full h-full object-contain bg-gray-100 hidden z-20" />
+
+                                <input id="image-upload" type="file" class="hidden" accept="image/*" />
+                            </label>
+                        </div>
+
+                        <div id="mode-camera" class="hidden">
+                            <div class="relative rounded-2xl overflow-hidden shadow-lg bg-black aspect-[4/3]">
+                                <video id="video-feed" class="w-full h-full object-cover" autoplay playsinline></video>
+                                <div class="scan-line z-10"></div>
+                                <div class="absolute bottom-4 left-0 w-full flex justify-center z-20">
+                                    <button id="btn-capture"
+                                        class="w-16 h-16 bg-white rounded-full border-4 border-gray-300 flex items-center justify-center shadow-lg btn-press">
+                                        <div class="w-12 h-12 bg-red-500 rounded-full"></div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="action-container" class="hidden mt-6">
+                            <button id="predict-btn"
+                                class="w-full mt-4 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-indigo-500/40 hover:shadow-indigo-500/60 transition-all btn-press flex items-center justify-center gap-2">
+                                <i class="fas fa-bolt"></i> Phân Tích Ngay
+                            </button>
+
+                            <div id="loading" class="hidden mt-6 flex flex-col items-center">
+                                <div
+                                    class="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin">
+                                </div>
+                                <p class="text-sm font-medium text-indigo-600 mt-3 animate-pulse">Đang phân tích...</p>
+                            </div>
                         </div>
                     </div>
-                    <div id="preview-container" class="hidden mt-4">
-                        <img id="image-preview" class="w-full h-48 object-contain rounded mb-3 border" />
-                        <button id="predict-btn"
-                            class="w-full bg-gradient-brand text-white font-bold py-3 rounded-xl shadow-lg">Gửi
-                            Server</button>
-                        <div id="loading" class="hidden text-center text-indigo-600 mt-2"><i
-                                class="fas fa-spinner fa-spin"></i> Đang xử lý...</div>
-                    </div>
-                    <div id="result-card" class="hidden mt-6 pt-4 border-t">
-                        <div id="prediction-list" class="space-y-2"></div>
+
+                    <div id="result-card" class="hidden mt-6 fade-enter">
+                        <h3 class="text-lg font-bold text-slate-800 mb-3 px-1">Kết quả</h3>
+                        <div class="glass-card rounded-2xl p-5 space-y-4" id="prediction-list">
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div id="section-history" class="hidden">
-                <h2 class="font-bold text-xl mb-4">Lịch sử</h2>
-                <div id="history-loading" class="text-center hidden"><i class="fas fa-spinner fa-spin"></i></div>
-                <div id="history-empty" class="hidden text-center text-gray-500">Chưa có dữ liệu.</div>
-                <div id="history-list" class="space-y-4"></div>
+                <div id="section-history" class="hidden fade-enter pb-20">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-2xl font-bold text-slate-800">Lịch sử</h2>
+                        <span class="text-xs font-medium bg-white px-3 py-1 rounded-full text-gray-500 shadow-sm">Gần
+                            đây</span>
+                    </div>
+
+                    <div id="history-loading" class="text-center py-10 hidden">
+                        <div
+                            class="inline-block w-8 h-8 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin">
+                        </div>
+                    </div>
+
+                    <div id="history-empty" class="hidden flex flex-col items-center justify-center py-10 opacity-60">
+                        <i class="fas fa-box-open text-4xl text-gray-300 mb-3"></i>
+                        <p class="text-gray-400 font-medium">Chưa có dữ liệu nào</p>
+                    </div>
+
+                    <div id="history-list" class="space-y-4">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -177,50 +269,42 @@
 
     <script>
         const BASE_URL = "http://127.0.0.1:8000";
-        // --- QUAN TRỌNG: THAY BẰNG CLIENT ID CỦA BẠN Ở DƯỚI DÒNG NÀY ---
         const GOOGLE_CLIENT_ID = "624401284648-qg4bapeb16go2ja2dujftalnjb53u0ka.apps.googleusercontent.com";
 
-        // 1. XỬ LÝ GOOGLE LOGIN CALLBACK
+        // --- Logic cũ giữ nguyên ---
         async function handleGoogleCallback(response) {
-            // response.credential chứa token Google trả về
             console.log("Google Token:", response.credential);
-
             try {
-                // Gửi token này lên Server mình để đổi lấy JWT App
                 const res = await fetch(`${BASE_URL}/google-login`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ token: response.credential })
                 });
-
                 const data = await res.json();
-
                 if (res.ok && data.access_token) {
                     localStorage.setItem('access_token', data.access_token);
                     checkAuth();
-                    Swal.fire({ icon: 'success', title: 'Đăng nhập Google thành công!', timer: 1500, showConfirmButton: false });
-                } else {
-                    Swal.fire('Lỗi', data.detail || 'Xác thực thất bại', 'error');
-                }
-            } catch (err) {
-                Swal.fire('Lỗi', 'Không kết nối được Server', 'error');
-            }
+                    const Toast = Swal.mixin({ toast: true, position: 'top-end', showConfirmButton: false, timer: 3000, timerProgressBar: true });
+                    Toast.fire({ icon: 'success', title: 'Đăng nhập thành công' });
+                } else { Swal.fire('Lỗi', data.detail || 'Xác thực thất bại', 'error'); }
+            } catch (err) { Swal.fire('Lỗi', 'Không kết nối được Server', 'error'); }
         }
 
-        // --- CÁC HÀM CŨ (GIỮ NGUYÊN) ---
         let currentFile = null; let stream = null;
         function getToken() { return localStorage.getItem('access_token'); }
 
         function checkAuth() {
             const token = getToken();
+            const authScreen = document.getElementById('auth-screen');
+            const mainScreen = document.getElementById('main-screen');
+
             if (token) {
-                document.getElementById('auth-screen').classList.add('hidden');
-                document.getElementById('main-screen').classList.remove('hidden');
-                document.getElementById('main-screen').classList.add('flex');
+                authScreen.classList.add('hidden');
+                mainScreen.classList.remove('hidden');
+                mainScreen.classList.add('flex');
             } else {
-                document.getElementById('auth-screen').classList.remove('hidden');
-                document.getElementById('main-screen').classList.add('hidden');
-                document.getElementById('main-screen').classList.remove('flex');
+                authScreen.classList.remove('hidden');
+                mainScreen.classList.add('hidden');
+                mainScreen.classList.remove('flex');
             }
         }
 
@@ -228,25 +312,36 @@
             localStorage.removeItem('access_token');
             checkAuth();
             stopCamera();
-            // Reload để reset Google button nếu cần
             window.location.reload();
         }
 
         function switchAuthMode(mode) {
+            const btnLogin = document.getElementById('tab-login');
+            const btnReg = document.getElementById('tab-register');
+            const formLogin = document.getElementById('form-login');
+            const formReg = document.getElementById('form-register');
+
             if (mode === 'login') {
-                document.getElementById('form-login').classList.remove('hidden');
-                document.getElementById('form-register').classList.add('hidden');
-                document.getElementById('tab-login').className = "flex-1 py-2 rounded-md text-sm font-semibold shadow bg-white text-indigo-600 transition-all";
-                document.getElementById('tab-register').className = "flex-1 py-2 rounded-md text-sm font-medium text-gray-500 hover:text-indigo-600 transition-all";
+                formLogin.classList.remove('hidden');
+                formReg.classList.add('hidden');
+                btnLogin.classList.replace('text-gray-500', 'text-indigo-600');
+                btnLogin.classList.add('bg-white', 'shadow-sm', 'font-bold');
+                btnLogin.classList.remove('font-medium');
+                btnReg.classList.replace('text-indigo-600', 'text-gray-500');
+                btnReg.classList.remove('bg-white', 'shadow-sm', 'font-bold');
+                btnReg.classList.add('font-medium');
             } else {
-                document.getElementById('form-login').classList.add('hidden');
-                document.getElementById('form-register').classList.remove('hidden');
-                document.getElementById('tab-register').className = "flex-1 py-2 rounded-md text-sm font-semibold shadow bg-white text-indigo-600 transition-all";
-                document.getElementById('tab-login').className = "flex-1 py-2 rounded-md text-sm font-medium text-gray-500 hover:text-indigo-600 transition-all";
+                formLogin.classList.add('hidden');
+                formReg.classList.remove('hidden');
+                btnReg.classList.replace('text-gray-500', 'text-indigo-600');
+                btnReg.classList.add('bg-white', 'shadow-sm', 'font-bold');
+                btnReg.classList.remove('font-medium');
+                btnLogin.classList.replace('text-indigo-600', 'text-gray-500');
+                btnLogin.classList.remove('bg-white', 'shadow-sm', 'font-bold');
+                btnLogin.classList.add('font-medium');
             }
         }
 
-        // Login thường
         async function handleLogin(e) {
             e.preventDefault();
             const u = document.getElementById('login-username').value;
@@ -260,8 +355,7 @@
                 if (res.ok && data.access_token) {
                     localStorage.setItem('access_token', data.access_token);
                     checkAuth();
-                    Swal.fire({ icon: 'success', title: 'Thành công', timer: 1000, showConfirmButton: false });
-                } else Swal.fire('Lỗi', data.detail, 'error');
+                } else Swal.fire({ icon: 'error', title: 'Thất bại', text: data.detail });
             } catch (err) { Swal.fire('Lỗi mạng', '', 'error'); }
         }
 
@@ -274,12 +368,14 @@
                     method: 'POST', headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username: u, password: p })
                 });
-                if (res.ok) { Swal.fire('OK', 'Đăng ký xong', 'success'); switchAuthMode('login'); }
+                if (res.ok) {
+                    Swal.fire({ icon: 'success', title: 'Đăng ký thành công', text: 'Vui lòng đăng nhập' });
+                    switchAuthMode('login');
+                }
                 else { const d = await res.json(); Swal.fire('Lỗi', d.detail, 'error'); }
             } catch (e) { }
         }
 
-        // Navigation App
         function showAppSection(section) {
             const secP = document.getElementById('section-predict');
             const secH = document.getElementById('section-history');
@@ -289,85 +385,133 @@
 
         function switchInputMode(mode) {
             stopCamera();
-            document.getElementById('preview-container').classList.add('hidden');
+            // Reset hiển thị (Ẩn nút action, ẩn kết quả)
+            document.getElementById('action-container').classList.add('hidden');
             document.getElementById('result-card').classList.add('hidden');
+
+            const btnUp = document.getElementById('tab-upload');
+            const btnCam = document.getElementById('tab-camera');
+
             if (mode === 'upload') {
                 document.getElementById('mode-upload').classList.remove('hidden');
                 document.getElementById('mode-camera').classList.add('hidden');
-                document.getElementById('tab-upload').className = "flex-1 pb-2 text-indigo-600 border-b-2 border-indigo-600 font-bold";
-                document.getElementById('tab-camera').className = "flex-1 pb-2 text-gray-500";
+                btnUp.className = "flex-1 py-3 rounded-xl text-sm font-bold bg-white shadow text-indigo-600 transition-all duration-300";
+                btnCam.className = "flex-1 py-3 rounded-xl text-sm font-medium text-gray-500 hover:text-indigo-600 transition-all duration-300";
+
+                // Nếu đã chọn ảnh trước đó thì hiện lại nút Action
+                if (currentFile) document.getElementById('action-container').classList.remove('hidden');
             } else {
                 document.getElementById('mode-camera').classList.remove('hidden');
                 document.getElementById('mode-upload').classList.add('hidden');
-                document.getElementById('tab-camera').className = "flex-1 pb-2 text-indigo-600 border-b-2 border-indigo-600 font-bold";
-                document.getElementById('tab-upload').className = "flex-1 pb-2 text-gray-500";
+                btnCam.className = "flex-1 py-3 rounded-xl text-sm font-bold bg-white shadow text-indigo-600 transition-all duration-300";
+                btnUp.className = "flex-1 py-3 rounded-xl text-sm font-medium text-gray-500 hover:text-indigo-600 transition-all duration-300";
                 startCamera();
             }
         }
 
+        // --- HÀM MỚI: Xử lý khi chọn file ---
+        function handleFileSelect(file) {
+            currentFile = file;
+            const url = URL.createObjectURL(file);
+
+            // Hiện ảnh vào ô upload box
+            const imgBox = document.getElementById('upload-box-img');
+            const placeholder = document.getElementById('upload-placeholder');
+
+            imgBox.src = url;
+            imgBox.classList.remove('hidden'); // Hiện thẻ img
+            placeholder.classList.add('opacity-0'); // Ẩn icon/chữ bên dưới đi
+
+            // Hiện nút Action (thay cho preview container cũ)
+            document.getElementById('action-container').classList.remove('hidden');
+            document.getElementById('result-card').classList.add('hidden');
+        }
+
         document.getElementById('image-upload').addEventListener('change', (e) => {
             if (e.target.files[0]) {
-                currentFile = e.target.files[0];
-                document.getElementById('image-preview').src = URL.createObjectURL(currentFile);
-                document.getElementById('preview-container').classList.remove('hidden');
-                document.getElementById('result-card').classList.add('hidden');
+                handleFileSelect(e.target.files[0]);
             }
         });
 
         async function startCamera() {
             try { stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } }); document.getElementById('video-feed').srcObject = stream; }
-            catch (err) { Swal.fire('Lỗi Cam', '', 'error'); }
+            catch (err) { Swal.fire('Không thể mở Camera', 'Vui lòng cấp quyền truy cập', 'error'); }
         }
         function stopCamera() { if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; } }
+
         document.getElementById('btn-capture').onclick = () => {
             const v = document.getElementById('video-feed'); const c = document.getElementById('canvas-capture');
             c.width = v.videoWidth; c.height = v.videoHeight; c.getContext('2d').drawImage(v, 0, 0);
             c.toBlob(b => {
-                currentFile = new File([b], "cam.jpg", { type: "image/jpeg" });
-                document.getElementById('image-preview').src = URL.createObjectURL(currentFile);
-                document.getElementById('preview-container').classList.remove('hidden'); stopCamera();
+                // Khi chụp xong: Chuyển về tab Upload và hiển thị ảnh
+                const file = new File([b], "cam.jpg", { type: "image/jpeg" });
+                switchInputMode('upload');
+                handleFileSelect(file);
+
+                stopCamera();
+                document.getElementById('mode-camera').classList.add('hidden');
             }, 'image/jpeg');
         };
 
-        // Predict
         document.getElementById('predict-btn').onclick = async () => {
             const token = getToken(); if (!token) { logout(); return; }
             const btn = document.getElementById('predict-btn'); const load = document.getElementById('loading');
             btn.classList.add('hidden'); load.classList.remove('hidden'); document.getElementById('result-card').classList.add('hidden');
+
             const fd = new FormData(); fd.append('file', currentFile);
             try {
-                // Gửi Token qua URL
                 const res = await fetch(`${BASE_URL}/predict?token=${token}`, { method: 'POST', body: fd });
                 const data = await res.json();
                 if (res.ok && data.success) {
                     const list = document.getElementById('prediction-list'); list.innerHTML = '';
-                    data.predictions.forEach(i => {
-                        list.innerHTML += `<div class="flex justify-between font-medium"><span>${i.class}</span><span>${i.confidence}</span></div>
-                        <div class="w-full bg-gray-200 h-2 rounded-full"><div class="bg-indigo-600 h-2 rounded-full" style="width:${i.confidence}"></div></div>`;
+                    data.predictions.forEach((i, idx) => {
+                        const percent = parseFloat(i.confidence) * 100;
+                        const colorClass = idx === 0 ? 'bg-indigo-600' : 'bg-gray-400';
+                        const textClass = idx === 0 ? 'text-indigo-700 font-bold' : 'text-gray-600';
+                        list.innerHTML += `
+                        <div class="mb-2">
+                            <div class="flex justify-between items-end mb-1">
+                                <span class="${textClass} text-base capitalize">${i.class}</span>
+                                <span class="text-xs font-semibold text-gray-500">${i.confidence}</span>
+                            </div>
+                            <div class="w-full bg-gray-200 h-3 rounded-full overflow-hidden">
+                                <div class="${colorClass} h-3 rounded-full transition-all duration-1000 ease-out" style="width: 0%" id="prog-${idx}"></div>
+                            </div>
+                        </div>`;
+                        setTimeout(() => { document.getElementById(`prog-${idx}`).style.width = i.confidence; }, 100);
                     });
                     document.getElementById('result-card').classList.remove('hidden');
-                } else if (res.status === 401 || res.status === 422) { logout(); }
+                    document.getElementById('result-card').scrollIntoView({ behavior: 'smooth' });
+                } else if (res.status === 401) { logout(); }
                 else Swal.fire('Lỗi', data.detail, 'error');
             } catch (e) { Swal.fire('Lỗi Server', '', 'error'); }
             finally { load.classList.add('hidden'); btn.classList.remove('hidden'); }
         };
 
-        // History
         async function loadHistory() {
             showAppSection('history'); const token = getToken(); if (!token) return logout();
             const list = document.getElementById('history-list'); list.innerHTML = '';
+            document.getElementById('history-loading').classList.remove('hidden');
+            document.getElementById('history-empty').classList.add('hidden');
+
             try {
                 const res = await fetch(`${BASE_URL}/history?token=${token}`);
                 const data = await res.json();
+                document.getElementById('history-loading').classList.add('hidden');
                 if (res.ok) {
                     if (data.length === 0) document.getElementById('history-empty').classList.remove('hidden');
                     else {
-                        document.getElementById('history-empty').classList.add('hidden');
                         data.forEach(i => {
-                            list.innerHTML += `<div class="bg-white p-3 rounded shadow flex gap-3 relative border">
-                                <button onclick="delH(${i.id},this)" class="absolute top-2 right-2 text-gray-300 hover:text-red-500"><i class="fas fa-trash"></i></button>
-                                <img src="${i.image_name}" class="w-20 h-20 object-cover rounded">
-                                <div><div class="font-bold text-indigo-700">${i.prediction}</div><div class="text-xs text-gray-500">${new Date(i.timestamp || Date.now()).toLocaleString()}</div></div>
+                            list.innerHTML += `
+                            <div class="glass-card p-4 rounded-xl flex gap-4 relative group transition-all hover:shadow-md">
+                                <img src="${i.image_name}" class="w-20 h-20 object-cover rounded-lg shadow-sm border border-white">
+                                <div class="flex-1">
+                                    <h4 class="font-bold text-indigo-700 text-lg capitalize">${i.prediction}</h4>
+                                    <p class="text-xs text-gray-500 mt-1"><i class="far fa-clock mr-1"></i>${new Date(i.timestamp || Date.now()).toLocaleString()}</p>
+                                </div>
+                                <button onclick="delH(${i.id},this)" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-gray-50 text-gray-400 hover:bg-red-50 hover:text-red-500 flex items-center justify-center transition-colors">
+                                    <i class="fas fa-trash-alt text-sm"></i>
+                                </button>
                             </div>`;
                         });
                     }
@@ -376,12 +520,26 @@
         }
 
         async function delH(id, el) {
-            if (!confirm('Xóa?')) return;
-            const token = getToken();
-            await fetch(`${BASE_URL}/history-delete?token=${token}`, {
-                method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: id })
-            });
-            el.closest('div').remove();
+            Swal.fire({
+                title: 'Xóa mục này?',
+                text: "Bạn không thể hoàn tác sau khi xóa!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#ef4444',
+                cancelButtonColor: '#cbd5e1',
+                confirmButtonText: 'Xóa ngay',
+                cancelButtonText: 'Hủy'
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    const token = getToken();
+                    await fetch(`${BASE_URL}/history-delete?token=${token}`, {
+                        method: 'DELETE', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: id })
+                    });
+                    const item = el.closest('.glass-card');
+                    item.style.opacity = '0';
+                    setTimeout(() => item.remove(), 300);
+                }
+            })
         }
 
         checkAuth();

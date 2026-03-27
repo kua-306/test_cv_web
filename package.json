@@ -1,0 +1,13 @@
+{
+  "name": "ui-crawler-playwright",
+  "version": "1.0.0",
+  "description": "Authenticated Playwright crawler for extracting UI pages and elements.",
+  "main": "crawler.js",
+  "scripts": {
+    "crawl": "node crawler.js",
+    "install:browsers": "playwright install chromium"
+  },
+  "dependencies": {
+    "playwright": "^1.55.0"
+  }
+}

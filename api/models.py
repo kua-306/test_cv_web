@@ -17,3 +17,8 @@ class History(Base):
     timestamp = Column(DateTime,default=datetime.now) 
     own_id = Column(Integer,ForeignKey('users.id'))
 
+class Animal(Base):
+    __tablename__ = 'animals'
+    id = Column(Integer,primary_key = True,index = True)
+    name = Column(String)
+    embedding_vector = Column(String)

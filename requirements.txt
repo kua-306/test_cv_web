@@ -1,0 +1,30 @@
+# --- Web Backend (FastAPI) & Server ---
+fastapi[all]
+uvicorn[standard]
+python-multipart
+python-dotenv
+pydantic
+
+# --- Database (Cần thiết để lưu kết quả nhận diện) ---
+sqlalchemy
+aiosqlite
+
+# --- AI & Computer Vision ---
+tensorflow
+ultralytics
+paddleocr
+paddlepaddle
+opencv-python-headless
+pillow
+numpy
+
+# --- AI Agents & Gemini ---
+langchain-google-genai
+google-generativeai
+tenacity
+
+# --- Testing (Python side) ---
+pytest
+pytest-playwright
+pytest-asyncio
+atomicwrites

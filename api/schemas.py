@@ -31,3 +31,8 @@ class Token(BaseModel):
     status : str
     access_token: str
     token_type: str
+
+class Animal(BaseModel):
+    id: int
+    name: str
+    embedding_vector: str
