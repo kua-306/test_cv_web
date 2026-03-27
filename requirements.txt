@@ -8,6 +8,7 @@ slowapi
 cloudinary
 passlib[bcrypt]
 bcrypt
+python-jose[cryptography]
 # --- Database (Cần thiết để lưu kết quả nhận diện) ---
 sqlalchemy
 aiosqlite
