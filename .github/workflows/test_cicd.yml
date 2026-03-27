@@ -20,16 +20,13 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Start FastAPI server
+      - name: Start API and Monitor Log
+        # Chỉ định luôn là làm việc trong thư mục api
+        working-directory: ./api 
         run: |
-          cd api
-          python -m uvicorn api:app --host 127.0.0.1 --port 8000 &
-      - name: Wait for API to be ready
-        # Đợi cổng 8000 phản hồi, tối đa 10 phút (600000ms)
-        run: npx wait-on http://127.0.0.1:8000 --timeout 600000
-      - name: Show API logs on failure
-        if: failure()
-        run: cat api/server.log
+          nohup python -m uvicorn api:app --host 127.0.0.1 --port 8000 > server.log 2>&1 &
+          timeout 120s sh -c 'until grep -q "Application startup complete" server.log; do sleep 2; done' || true
+          cat server.log
       - name: Run Test Unhappy case
         run: |
           npx playwright test tests/unhappy.spec.js
