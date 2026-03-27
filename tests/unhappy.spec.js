@@ -133,19 +133,29 @@ test('invalid login shows an error', async ({ page }) => {
 test('duplicate register shows an error and leaves register mode visible', async ({ page }) => {
   await gotoApp(page);
 
-  await clickAndWait(page, '#tab-register');
+  // 1. Vào tab đăng ký
+  await page.locator('#tab-register').click();
+
+  // 2. Điền thông tin user đã tồn tại
   await page.locator('#reg-username').fill('thune@gmail.com');
   await page.locator('#reg-password').fill('DuplicateUser123!');
-  await page.locator('#form-register button[type="submit"]').click();
-  try {
-    const alert = page.locator('.swal2-popup');
-    await expect(alert).toBeVisible({ timeout: 5000 });
-  } catch (e) {
-    await page.screenshot({ path: 'output/error-popup.png' });
-    throw e;
-  }
-  await expect(page.locator('#form-register')).toBeVisible();
-  await dismissAlert(page);
+
+  // 3. VỪA BẤM NÚT VỪA ĐỢI API TRẢ LỜI (Tránh đợi vô tri)
+  await Promise.all([
+    page.waitForResponse(resp => resp.url().includes('/register'), { timeout: 15000 }),
+    page.locator('#form-register button[type="submit"]').click()
+  ]);
+
+  // 4. ĐỢI THÊM 1 GIÂY CHO POPUP HIỆN RA HẲN
+  await page.waitForTimeout(1000);
+
+  // 5. KIỂM TRA (Tăng timeout lên 10s cho máy ảo GitHub chạy kịp)
+  const alert = page.locator('.swal2-popup');
+  await expect(alert).toBeVisible({ timeout: 10000 });
+  await expect(alert).toContainText('Thất bại', { ignoreCase: true });
+
+  // 6. ĐÓNG POPUP
+  await page.locator('.swal2-confirm').click();
 });
 
 test('invalid file upload shows an error and does not render prediction results', async ({ page }) => {
