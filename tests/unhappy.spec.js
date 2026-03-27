@@ -149,7 +149,7 @@ test('duplicate register shows an error and leaves register mode visible', async
   await submitBtn.click({ force: true });
 
   // const alert = page.locator('.swal2-popup');
-  // await expect(alert).toBeVisible({ timeout: 15000 });
+  await expect(alert).toBeVisible({ timeout: 15000 });
 
   await page.locator('.swal2-confirm').click();
 });
