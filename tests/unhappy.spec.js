@@ -119,8 +119,7 @@ test('invalid login shows an error', async ({ page }) => {
   await clickAndWait(page, '#form-login button[type="submit"]');
 
   await expectAlert(page);
-  // Kiểm tra chữ "Thất bại" hoặc message lỗi từ SweetAlert2
-  await expect(page.getByText('Thất bại')).toBeVisible();
+  await expect(page.getByText('Thất bại'), { exact: false }).toBeVisible();
   await expect(page.locator('#auth-screen')).toBeVisible();
   await dismissAlert(page);
 });
