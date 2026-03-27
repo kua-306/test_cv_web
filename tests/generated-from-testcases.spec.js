@@ -11,6 +11,13 @@ const SAMPLE_IMAGE_PATH = path.join(ROOT_DIR, '456.jpg');
 const TESTCASES_PATH = path.join(ROOT_DIR, 'output', 'testcases.json');
 const AUTH_META_PATH = path.join(ROOT_DIR, 'output', 'auth-meta.json');
 
+if (!fs.existsSync(OUTPUT_DIR)) {
+  fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+}
+if (!fs.existsSync(AUTH_META_PATH)) {
+  // Tạo file json rỗng để Playwright không báo lỗi ENOENT khi require
+  fs.writeFileSync(AUTH_META_PATH, JSON.stringify({ cookies: [], origins: [] }));
+}
 const testcaseData = JSON.parse(fs.readFileSync(TESTCASES_PATH, 'utf8'));
 const authMeta = fs.existsSync(AUTH_META_PATH)
   ? JSON.parse(fs.readFileSync(AUTH_META_PATH, 'utf8'))

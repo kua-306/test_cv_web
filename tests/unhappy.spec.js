@@ -11,6 +11,13 @@ const SAMPLE_IMAGE_PATH = path.join(ROOT_DIR, '456.jpg');
 const INVALID_UPLOAD_PATH = path.join(ROOT_DIR, 'package.json');
 const AUTH_META_PATH = path.join(ROOT_DIR, 'output', 'auth-meta.json');
 
+if (!fs.existsSync(OUTPUT_DIR)) {
+  fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+}
+if (!fs.existsSync(AUTH_META_PATH)) {
+  // Tạo file json rỗng để Playwright không báo lỗi ENOENT khi require
+  fs.writeFileSync(AUTH_META_PATH, JSON.stringify({ cookies: [], origins: [] }));
+}
 const authMeta = fs.existsSync(AUTH_META_PATH)
   ? JSON.parse(fs.readFileSync(AUTH_META_PATH, 'utf8'))
   : null;
@@ -78,7 +85,20 @@ async function createPrediction(page) {
   await clickAndWait(page, '#predict-btn');
   await expect(page.locator('#result-card')).toBeVisible();
 }
+test('[Registration] Create real user for subsequent tests', async ({ page }) => {
+  await gotoApp(page);
 
+  await clickAndWait(page, '#tab-register');
+  await page.locator('#reg-username').fill('thune@gmail.com');
+  await page.locator('#reg-password').fill('ntltcua3006');
+
+  // Nhấn nút submit đăng ký (selector dựa trên form-register của bạn)
+  await page.locator('#form-register button[type="submit"]').click();
+
+  // Đợi một chút để DB kịp ghi và hiện thông báo thành công hoặc quay về form login
+  await page.waitForTimeout(1000);
+  await expect(page.locator('#form-login')).toBeVisible();
+});
 test('invalid login shows an error and keeps the user on the auth screen', async ({ page }) => {
   await gotoApp(page);
 
