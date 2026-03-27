@@ -120,7 +120,7 @@ test('invalid login shows an error', async ({ page }) => {
 
   await expectAlert(page);
   // Kiểm tra chữ "Thất bại" hoặc message lỗi từ SweetAlert2
-  await expect(page.locator('.swal2-title')).toContainText('Thất bại', { ignoreCase: true });
+  await expect(page.getByText('Thất bại')).toBeVisible();
   await expect(page.locator('#auth-screen')).toBeVisible();
   await dismissAlert(page);
 });
