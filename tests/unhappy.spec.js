@@ -76,6 +76,7 @@ async function clickAndWait(page, selector) {
 
 async function expectAlert(page) {
   const popup = page.locator('.swal2-popup');
+  await popup.waitFor({ state: 'visible', timeout: 10000 });
   await expect(popup).toBeVisible();
   return popup;
 }
@@ -119,7 +120,7 @@ test('invalid login shows an error', async ({ page }) => {
   await clickAndWait(page, '#form-login button[type="submit"]');
 
   await expectAlert(page);
-  // await expect(page.getByText('Thất bại', { exact: false })).toBeVisible();
+  await expect(page.getByText('Thất bại', { exact: false })).toBeVisible();
   await expect(page.locator('#auth-screen')).toBeVisible();
   await dismissAlert(page);
 });
