@@ -4,7 +4,8 @@ uvicorn[standard]
 python-multipart
 python-dotenv
 pydantic
-
+slowapi
+cloudinary
 # --- Database (Cần thiết để lưu kết quả nhận diện) ---
 sqlalchemy
 aiosqlite
