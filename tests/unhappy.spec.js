@@ -117,10 +117,10 @@ test('invalid login shows an error', async ({ page }) => {
   await gotoApp(page);
   await page.locator('#login-username').fill('thune@gmail.com');
   await page.locator('#login-password').fill('wrong-password');
-  await clickAndWait(page, '#form-login button[type="submit"]');
+  await page.locator('#form-register button[type="submit"]').click();
 
   await expectAlert(page);
-  // await expect(page.getByText('Thất bại', { exact: false })).toBeVisible();
+  await expect(page.getByText('Thất bại', { exact: false })).toBeVisible();
   await expect(page.locator('#auth-screen')).toBeVisible();
   await dismissAlert(page);
 });
@@ -131,8 +131,7 @@ test('duplicate register shows an error and leaves register mode visible', async
   await clickAndWait(page, '#tab-register');
   await page.locator('#reg-username').fill('thune@gmail.com');
   await page.locator('#reg-password').fill('DuplicateUser123!');
-  await clickAndWait(page, '#form-register button[type="submit"]');
-  await page.waitForTimeout(1000);
+  await page.locator('#form-register button[type="submit"]').click(); await page.waitForTimeout(1000);
 
   await expectAlert(page);
   await expect(page.locator('#form-register')).toBeVisible();
@@ -145,7 +144,7 @@ test('invalid file upload shows an error and does not render prediction results'
   await clickAndWait(page, 'button[onclick="showAppSection(\'predict\')"]');
   await page.locator('#image-upload').setInputFiles(INVALID_UPLOAD_PATH);
   await waitForNetworkIdle(page);
-  await clickAndWait(page, '#predict-btn');
+  await page.locator('#predict-btn button[type="submit"]').click()
 
   await expectAlert(page);
   await expect(page.locator('#result-card')).toBeHidden();
