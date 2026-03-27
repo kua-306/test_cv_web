@@ -25,7 +25,7 @@ jobs:
 
       - name: Run Test Unhappy case
         run: |
-          npx playwright test test/unhappy.spec.js
+          npx playwright test tests/unhappy.spec.js
       - name: Run Test Happy case
         run: |
-          npx playwright test test/generated-from-testcase.spec.js
+          npx playwright test tests/generated-from-testcase.spec.js

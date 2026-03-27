@@ -1,9 +1,12 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { test, expect } = require('playwright/test');
+const { test, expect } = require('@playwright/test'); // Nhớ thêm @ vào trước playwright nhé
 
+// ROOT_DIR sẽ trỏ về thư mục 'app'
 const ROOT_DIR = path.resolve(__dirname, '..');
-const BASE_URL = 'file:///C:/Users/thuu/Desktop/DATN/app/app.html';
+
+// Tự động tạo URL file:// phù hợp với mọi hệ điều hành (Windows/Linux)
+const BASE_URL = `file://${path.join(ROOT_DIR, 'app.html')}`;
 const SAMPLE_IMAGE_PATH = path.join(ROOT_DIR, '456.jpg');
 const INVALID_UPLOAD_PATH = path.join(ROOT_DIR, 'package.json');
 const AUTH_META_PATH = path.join(ROOT_DIR, 'output', 'auth-meta.json');
