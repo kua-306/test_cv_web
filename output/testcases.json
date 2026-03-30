@@ -1,0 +1,899 @@
+{
+  "generatedAt": "2026-03-26T09:38:17.769Z",
+  "baseUrl": "file:///C:/Users/thuu/Desktop/DATN/app/app.html",
+  "scenarios": [
+    {
+      "id": "login-150c5d5d-page-load",
+      "page": "login-150c5d5d",
+      "type": "page-load",
+      "title": "Computer Vision loads successfully",
+      "steps": [
+        "Navigate to file:///C:/Users/thuu/Desktop/DATN/app/app.html.",
+        "Wait for the page title and primary container to render."
+      ],
+      "expected": [
+        "The page is displayed without console or network blocking errors.",
+        "The expected title and key interactive elements are visible."
+      ]
+    },
+    {
+      "id": "login-150c5d5d-navigation",
+      "page": "login-150c5d5d",
+      "type": "navigation",
+      "title": "Computer Vision can be reached through the UI",
+      "steps": [
+        "1. Open login page"
+      ],
+      "expected": [
+        "The browser remains on the authenticated experience and reaches Computer Vision."
+      ]
+    },
+    {
+      "id": "login-150c5d5d-form-1",
+      "page": "login-150c5d5d",
+      "type": "form-submit",
+      "title": "Computer Vision form 1 submits correctly",
+      "selector": "#form-login",
+      "steps": [
+        "Locate the form using #form-login.",
+        "Populate required fields with valid data.",
+        "Submit the form and wait for the expected success state."
+      ],
+      "expected": [
+        "Validation errors are not shown for valid data.",
+        "The expected success state, navigation, or response is displayed."
+      ]
+    },
+    {
+      "id": "login-150c5d5d-button-1",
+      "page": "login-150c5d5d",
+      "type": "button-click",
+      "title": "Computer Vision button 1 reacts correctly",
+      "selector": "#auth-screen > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+      "label": "Đăng nhập bằng Google",
+      "steps": [
+        "Locate the button using #auth-screen > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "login-150c5d5d-button-2",
+      "page": "login-150c5d5d",
+      "type": "button-click",
+      "title": "Computer Vision button 2 reacts correctly",
+      "selector": "#tab-login",
+      "label": "Đăng nhập",
+      "steps": [
+        "Locate the button using #tab-login.",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "login-150c5d5d-button-3",
+      "page": "login-150c5d5d",
+      "type": "button-click",
+      "title": "Computer Vision button 3 reacts correctly",
+      "selector": "#tab-register",
+      "label": "Đăng ký",
+      "steps": [
+        "Locate the button using #tab-register.",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "login-150c5d5d-button-4",
+      "page": "login-150c5d5d",
+      "type": "button-click",
+      "title": "Computer Vision button 4 reacts correctly",
+      "selector": "button[type=\"submit\"]",
+      "label": "Truy cập ngay",
+      "steps": [
+        "Locate the button using button[type=\"submit\"].",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "register-353b6970-page-load",
+      "page": "register-353b6970",
+      "type": "page-load",
+      "title": "Computer Vision loads successfully",
+      "steps": [
+        "Navigate to file:///C:/Users/thuu/Desktop/DATN/app/app.html.",
+        "Wait for the page title and primary container to render."
+      ],
+      "expected": [
+        "The page is displayed without console or network blocking errors.",
+        "The expected title and key interactive elements are visible."
+      ]
+    },
+    {
+      "id": "register-353b6970-navigation",
+      "page": "register-353b6970",
+      "type": "navigation",
+      "title": "Computer Vision can be reached through the UI",
+      "steps": [
+        "1. Open login page",
+        "2. Switch to register mode"
+      ],
+      "expected": [
+        "The browser remains on the authenticated experience and reaches Computer Vision."
+      ]
+    },
+    {
+      "id": "register-353b6970-form-1",
+      "page": "register-353b6970",
+      "type": "form-submit",
+      "title": "Computer Vision form 1 submits correctly",
+      "selector": "#form-register",
+      "steps": [
+        "Locate the form using #form-register.",
+        "Populate required fields with valid data.",
+        "Submit the form and wait for the expected success state."
+      ],
+      "expected": [
+        "Validation errors are not shown for valid data.",
+        "The expected success state, navigation, or response is displayed."
+      ]
+    },
+    {
+      "id": "register-353b6970-button-1",
+      "page": "register-353b6970",
+      "type": "button-click",
+      "title": "Computer Vision button 1 reacts correctly",
+      "selector": "#auth-screen > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+      "label": "Đăng nhập bằng Google",
+      "steps": [
+        "Locate the button using #auth-screen > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "register-353b6970-button-2",
+      "page": "register-353b6970",
+      "type": "button-click",
+      "title": "Computer Vision button 2 reacts correctly",
+      "selector": "#tab-login",
+      "label": "Đăng nhập",
+      "steps": [
+        "Locate the button using #tab-login.",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "register-353b6970-button-3",
+      "page": "register-353b6970",
+      "type": "button-click",
+      "title": "Computer Vision button 3 reacts correctly",
+      "selector": "#tab-register",
+      "label": "Đăng ký",
+      "steps": [
+        "Locate the button using #tab-register.",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "register-353b6970-button-4",
+      "page": "register-353b6970",
+      "type": "button-click",
+      "title": "Computer Vision button 4 reacts correctly",
+      "selector": "button[type=\"submit\"]",
+      "label": "Tạo tài khoản mới",
+      "steps": [
+        "Locate the button using button[type=\"submit\"].",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "predict-05327f86-page-load",
+      "page": "predict-05327f86",
+      "type": "page-load",
+      "title": "Computer Vision loads successfully",
+      "steps": [
+        "Navigate to file:///C:/Users/thuu/Desktop/DATN/app/app.html.",
+        "Wait for the page title and primary container to render."
+      ],
+      "expected": [
+        "The page is displayed without console or network blocking errors.",
+        "The expected title and key interactive elements are visible."
+      ]
+    },
+    {
+      "id": "predict-05327f86-navigation",
+      "page": "predict-05327f86",
+      "type": "navigation",
+      "title": "Computer Vision can be reached through the UI",
+      "steps": [
+        "1. Authenticate and open the main application"
+      ],
+      "expected": [
+        "The browser remains on the authenticated experience and reaches Computer Vision."
+      ]
+    },
+    {
+      "id": "predict-05327f86-button-1",
+      "page": "predict-05327f86",
+      "type": "button-click",
+      "title": "Computer Vision button 1 reacts correctly",
+      "selector": "#main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1)",
+      "label": "showAppSection('predict')",
+      "steps": [
+        "Locate the button using #main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "predict-05327f86-button-2",
+      "page": "predict-05327f86",
+      "type": "button-click",
+      "title": "Computer Vision button 2 reacts correctly",
+      "selector": "#main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(2)",
+      "label": "loadHistory()",
+      "steps": [
+        "Locate the button using #main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(2).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "predict-05327f86-button-3",
+      "page": "predict-05327f86",
+      "type": "button-click",
+      "title": "Computer Vision button 3 reacts correctly",
+      "selector": "#main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3)",
+      "label": "logout()",
+      "steps": [
+        "Locate the button using #main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-page-load",
+      "page": "history-populated-d8d5d9e6",
+      "type": "page-load",
+      "title": "Computer Vision loads successfully",
+      "steps": [
+        "Navigate to file:///C:/Users/thuu/Desktop/DATN/app/app.html.",
+        "Wait for the page title and primary container to render."
+      ],
+      "expected": [
+        "The page is displayed without console or network blocking errors.",
+        "The expected title and key interactive elements are visible."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-navigation",
+      "page": "history-populated-d8d5d9e6",
+      "type": "navigation",
+      "title": "Computer Vision can be reached through the UI",
+      "steps": [
+        "1. Click loadHistory()"
+      ],
+      "expected": [
+        "The browser remains on the authenticated experience and reaches Computer Vision."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-1",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 1 reacts correctly",
+      "selector": "#main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1)",
+      "label": "showAppSection('predict')",
+      "steps": [
+        "Locate the button using #main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-2",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 2 reacts correctly",
+      "selector": "#main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(2)",
+      "label": "loadHistory()",
+      "steps": [
+        "Locate the button using #main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(2).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-3",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 3 reacts correctly",
+      "selector": "#main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3)",
+      "label": "logout()",
+      "steps": [
+        "Locate the button using #main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-4",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 4 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(1) > button:nth-of-type(1)",
+      "label": "delH(207,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(1) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-5",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 5 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(2) > button:nth-of-type(1)",
+      "label": "delH(206,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(2) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-6",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 6 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(3) > button:nth-of-type(1)",
+      "label": "delH(205,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(3) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-7",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 7 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(4) > button:nth-of-type(1)",
+      "label": "delH(204,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(4) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-8",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 8 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(5) > button:nth-of-type(1)",
+      "label": "delH(203,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(5) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-9",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 9 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(6) > button:nth-of-type(1)",
+      "label": "delH(202,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(6) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-10",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 10 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(7) > button:nth-of-type(1)",
+      "label": "delH(201,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(7) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-11",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 11 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(8) > button:nth-of-type(1)",
+      "label": "delH(200,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(8) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-12",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 12 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(9) > button:nth-of-type(1)",
+      "label": "delH(199,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(9) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-13",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 13 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(10) > button:nth-of-type(1)",
+      "label": "delH(198,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(10) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-14",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 14 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(11) > button:nth-of-type(1)",
+      "label": "delH(197,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(11) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-15",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 15 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(12) > button:nth-of-type(1)",
+      "label": "delH(196,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(12) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-16",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 16 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(13) > button:nth-of-type(1)",
+      "label": "delH(195,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(13) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-17",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 17 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(14) > button:nth-of-type(1)",
+      "label": "delH(194,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(14) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-18",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 18 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(15) > button:nth-of-type(1)",
+      "label": "delH(193,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(15) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-19",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 19 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(16) > button:nth-of-type(1)",
+      "label": "delH(192,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(16) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-20",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 20 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(17) > button:nth-of-type(1)",
+      "label": "delH(191,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(17) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-21",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 21 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(18) > button:nth-of-type(1)",
+      "label": "delH(190,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(18) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-22",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 22 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(19) > button:nth-of-type(1)",
+      "label": "delH(189,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(19) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-populated-d8d5d9e6-button-23",
+      "page": "history-populated-d8d5d9e6",
+      "type": "button-click",
+      "title": "Computer Vision button 23 reacts correctly",
+      "selector": "#history-list > div:nth-of-type(20) > button:nth-of-type(1)",
+      "label": "delH(188,this)",
+      "steps": [
+        "Locate the button using #history-list > div:nth-of-type(20) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "predict-ready-fd55db52-page-load",
+      "page": "predict-ready-fd55db52",
+      "type": "page-load",
+      "title": "Computer Vision loads successfully",
+      "steps": [
+        "Navigate to file:///C:/Users/thuu/Desktop/DATN/app/app.html.",
+        "Wait for the page title and primary container to render."
+      ],
+      "expected": [
+        "The page is displayed without console or network blocking errors.",
+        "The expected title and key interactive elements are visible."
+      ]
+    },
+    {
+      "id": "predict-ready-fd55db52-navigation",
+      "page": "predict-ready-fd55db52",
+      "type": "navigation",
+      "title": "Computer Vision can be reached through the UI",
+      "steps": [
+        "1. Upload sample file with #image-upload"
+      ],
+      "expected": [
+        "The browser remains on the authenticated experience and reaches Computer Vision."
+      ]
+    },
+    {
+      "id": "predict-ready-fd55db52-button-1",
+      "page": "predict-ready-fd55db52",
+      "type": "button-click",
+      "title": "Computer Vision button 1 reacts correctly",
+      "selector": "#main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1)",
+      "label": "showAppSection('predict')",
+      "steps": [
+        "Locate the button using #main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "predict-ready-fd55db52-button-2",
+      "page": "predict-ready-fd55db52",
+      "type": "button-click",
+      "title": "Computer Vision button 2 reacts correctly",
+      "selector": "#main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(2)",
+      "label": "loadHistory()",
+      "steps": [
+        "Locate the button using #main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(2).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "predict-ready-fd55db52-button-3",
+      "page": "predict-ready-fd55db52",
+      "type": "button-click",
+      "title": "Computer Vision button 3 reacts correctly",
+      "selector": "#main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3)",
+      "label": "logout()",
+      "steps": [
+        "Locate the button using #main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "predict-ready-fd55db52-button-4",
+      "page": "predict-ready-fd55db52",
+      "type": "button-click",
+      "title": "Computer Vision button 4 reacts correctly",
+      "selector": "#predict-btn",
+      "label": "Phân Tích Ngay",
+      "steps": [
+        "Locate the button using #predict-btn.",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "predict-results-04380f90-page-load",
+      "page": "predict-results-04380f90",
+      "type": "page-load",
+      "title": "Computer Vision loads successfully",
+      "steps": [
+        "Navigate to file:///C:/Users/thuu/Desktop/DATN/app/app.html.",
+        "Wait for the page title and primary container to render."
+      ],
+      "expected": [
+        "The page is displayed without console or network blocking errors.",
+        "The expected title and key interactive elements are visible."
+      ]
+    },
+    {
+      "id": "predict-results-04380f90-navigation",
+      "page": "predict-results-04380f90",
+      "type": "navigation",
+      "title": "Computer Vision can be reached through the UI",
+      "steps": [
+        "1. Upload sample file with #image-upload",
+        "2. Click Phân Tích Ngay"
+      ],
+      "expected": [
+        "The browser remains on the authenticated experience and reaches Computer Vision."
+      ]
+    },
+    {
+      "id": "predict-results-04380f90-button-1",
+      "page": "predict-results-04380f90",
+      "type": "button-click",
+      "title": "Computer Vision button 1 reacts correctly",
+      "selector": "#main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1)",
+      "label": "showAppSection('predict')",
+      "steps": [
+        "Locate the button using #main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "predict-results-04380f90-button-2",
+      "page": "predict-results-04380f90",
+      "type": "button-click",
+      "title": "Computer Vision button 2 reacts correctly",
+      "selector": "#main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(2)",
+      "label": "loadHistory()",
+      "steps": [
+        "Locate the button using #main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(2).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "predict-results-04380f90-button-3",
+      "page": "predict-results-04380f90",
+      "type": "button-click",
+      "title": "Computer Vision button 3 reacts correctly",
+      "selector": "#main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3)",
+      "label": "logout()",
+      "steps": [
+        "Locate the button using #main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "predict-results-04380f90-button-4",
+      "page": "predict-results-04380f90",
+      "type": "button-click",
+      "title": "Computer Vision button 4 reacts correctly",
+      "selector": "#predict-btn",
+      "label": "Phân Tích Ngay",
+      "steps": [
+        "Locate the button using #predict-btn.",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-5a103b8e-page-load",
+      "page": "history-5a103b8e",
+      "type": "page-load",
+      "title": "Computer Vision loads successfully",
+      "steps": [
+        "Navigate to file:///C:/Users/thuu/Desktop/DATN/app/app.html.",
+        "Wait for the page title and primary container to render."
+      ],
+      "expected": [
+        "The page is displayed without console or network blocking errors.",
+        "The expected title and key interactive elements are visible."
+      ]
+    },
+    {
+      "id": "history-5a103b8e-navigation",
+      "page": "history-5a103b8e",
+      "type": "navigation",
+      "title": "Computer Vision can be reached through the UI",
+      "steps": [
+        "1. Upload sample file with #image-upload",
+        "2. Click loadHistory()",
+        "3. Click loadHistory()"
+      ],
+      "expected": [
+        "The browser remains on the authenticated experience and reaches Computer Vision."
+      ]
+    },
+    {
+      "id": "history-5a103b8e-button-1",
+      "page": "history-5a103b8e",
+      "type": "button-click",
+      "title": "Computer Vision button 1 reacts correctly",
+      "selector": "#main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1)",
+      "label": "showAppSection('predict')",
+      "steps": [
+        "Locate the button using #main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-5a103b8e-button-2",
+      "page": "history-5a103b8e",
+      "type": "button-click",
+      "title": "Computer Vision button 2 reacts correctly",
+      "selector": "#main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(2)",
+      "label": "loadHistory()",
+      "steps": [
+        "Locate the button using #main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(2).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    },
+    {
+      "id": "history-5a103b8e-button-3",
+      "page": "history-5a103b8e",
+      "type": "button-click",
+      "title": "Computer Vision button 3 reacts correctly",
+      "selector": "#main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3)",
+      "label": "logout()",
+      "steps": [
+        "Locate the button using #main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3).",
+        "Click the button and observe the resulting state change."
+      ],
+      "expected": [
+        "The button click triggers the intended navigation, modal, or content update."
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-node_modules/
-output/
-playwright-report/
-test-results/
+# node_modules/
+# output/
+# playwright-report/
+# test-results/

@@ -1,0 +1,88 @@
+{
+  "generatedAt": "2026-03-26T09:38:17.766Z",
+  "baseUrl": "file:///C:/Users/thuu/Desktop/DATN/app/app.html",
+  "totalPages": 7,
+  "pages": [
+    {
+      "slug": "login-150c5d5d",
+      "url": "file:///C:/Users/thuu/Desktop/DATN/app/app.html",
+      "title": "Computer Vision",
+      "protectedRoute": false,
+      "navigationPath": [
+        "Open login page"
+      ],
+      "screenshot": "screenshots/login-150c5d5d.png",
+      "pageFile": "pages/login-150c5d5d.json"
+    },
+    {
+      "slug": "register-353b6970",
+      "url": "file:///C:/Users/thuu/Desktop/DATN/app/app.html",
+      "title": "Computer Vision",
+      "protectedRoute": false,
+      "navigationPath": [
+        "Open login page",
+        "Switch to register mode"
+      ],
+      "screenshot": "screenshots/register-353b6970.png",
+      "pageFile": "pages/register-353b6970.json"
+    },
+    {
+      "slug": "predict-05327f86",
+      "url": "file:///C:/Users/thuu/Desktop/DATN/app/app.html",
+      "title": "Computer Vision",
+      "protectedRoute": true,
+      "navigationPath": [
+        "Authenticate and open the main application"
+      ],
+      "screenshot": "screenshots/predict-05327f86.png",
+      "pageFile": "pages/predict-05327f86.json"
+    },
+    {
+      "slug": "history-populated-d8d5d9e6",
+      "url": "file:///C:/Users/thuu/Desktop/DATN/app/app.html",
+      "title": "Computer Vision",
+      "protectedRoute": true,
+      "navigationPath": [
+        "Click loadHistory()"
+      ],
+      "screenshot": "screenshots/history-populated-d8d5d9e6.png",
+      "pageFile": "pages/history-populated-d8d5d9e6.json"
+    },
+    {
+      "slug": "predict-ready-fd55db52",
+      "url": "file:///C:/Users/thuu/Desktop/DATN/app/app.html",
+      "title": "Computer Vision",
+      "protectedRoute": true,
+      "navigationPath": [
+        "Upload sample file with #image-upload"
+      ],
+      "screenshot": "screenshots/predict-ready-fd55db52.png",
+      "pageFile": "pages/predict-ready-fd55db52.json"
+    },
+    {
+      "slug": "predict-results-04380f90",
+      "url": "file:///C:/Users/thuu/Desktop/DATN/app/app.html",
+      "title": "Computer Vision",
+      "protectedRoute": true,
+      "navigationPath": [
+        "Upload sample file with #image-upload",
+        "Click Phân Tích Ngay"
+      ],
+      "screenshot": "screenshots/predict-results-04380f90.png",
+      "pageFile": "pages/predict-results-04380f90.json"
+    },
+    {
+      "slug": "history-5a103b8e",
+      "url": "file:///C:/Users/thuu/Desktop/DATN/app/app.html",
+      "title": "Computer Vision",
+      "protectedRoute": true,
+      "navigationPath": [
+        "Upload sample file with #image-upload",
+        "Click loadHistory()",
+        "Click loadHistory()"
+      ],
+      "screenshot": "screenshots/history-5a103b8e.png",
+      "pageFile": "pages/history-5a103b8e.json"
+    }
+  ]
+}

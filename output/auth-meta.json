@@ -1,0 +1,11 @@
+{
+  "savedAt": "2026-03-26T09:34:19.775Z",
+  "baseUrl": "file:///C:/Users/thuu/Desktop/DATN/app/app.html",
+  "origin": "file://",
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3In0.eJsW6CUxyW5VgCQWZt-F4je8FDtLxzdc_RtB1JLuUI4",
+  "selectors": {
+    "usernameSelector": "#login-username",
+    "passwordSelector": "#login-password",
+    "submitSelector": "#form-login button[type=\"submit\"]"
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "url": "file:///C:/Users/thuu/Desktop/DATN/app/app.html",
+  "title": "Computer Vision",
+  "navigationPath": [
+    "Open login page"
+  ],
+  "visibleIds": [
+    "auth-screen",
+    "form-login",
+    "login-password",
+    "login-username",
+    "tab-login",
+    "tab-register"
+  ],
+  "tokenPresent": false,
+  "protectedRoute": false,
+  "interactive": {
+    "buttons": [
+      {
+        "text": "Đăng nhập bằng Google",
+        "selector": "#auth-screen > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1)",
+        "visible": true,
+        "disabled": false,
+        "type": "div",
+        "onclick": ""
+      },
+      {
+        "text": "Đăng nhập",
+        "selector": "#tab-login",
+        "visible": true,
+        "disabled": false,
+        "type": "button",
+        "onclick": "switchAuthMode('login')"
+      },
+      {
+        "text": "Đăng ký",
+        "selector": "#tab-register",
+        "visible": true,
+        "disabled": false,
+        "type": "button",
+        "onclick": "switchAuthMode('register')"
+      },
+      {
+        "text": "Truy cập ngay",
+        "selector": "button[type=\"submit\"]",
+        "visible": true,
+        "disabled": false,
+        "type": "submit",
+        "onclick": ""
+      },
+      {
+        "text": "Tạo tài khoản mới",
+        "selector": "button[type=\"submit\"]",
+        "visible": false,
+        "disabled": false,
+        "type": "submit",
+        "onclick": ""
+      },
+      {
+        "text": "",
+        "selector": "#main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1)",
+        "visible": false,
+        "disabled": false,
+        "type": "button",
+        "onclick": "showAppSection('predict')"
+      },
+      {
+        "text": "",
+        "selector": "#main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(2)",
+        "visible": false,
+        "disabled": false,
+        "type": "button",
+        "onclick": "loadHistory()"
+      },
+      {
+        "text": "",
+        "selector": "#main-screen > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(3)",
+        "visible": false,
+        "disabled": false,
+        "type": "button",
+        "onclick": "logout()"
+      },
+      {
+        "text": "",
+        "selector": "#btn-capture",
+        "visible": false,
+        "disabled": false,
+        "type": "button",
+        "onclick": ""
+      },
+      {
+        "text": "Phân Tích Ngay",
+        "selector": "#predict-btn",
+        "visible": false,
+        "disabled": false,
+        "type": "button",
+        "onclick": ""
+      }
+    ],
+    "inputs": [
+      {
+        "type": "text",
+        "name": "login-username",
+        "placeholder": "Tên tài khoản",
+        "selector": "#login-username",
+        "visible": true,
+        "required": true,
+        "value": ""
+      },
+      {
+        "type": "password",
+        "name": "login-password",
+        "placeholder": "Mật khẩu",
+        "selector": "#login-password",
+        "visible": true,
+        "required": true,
+        "value": ""
+      },
+      {
+        "type": "text",
+        "name": "reg-username",
+        "placeholder": "Chọn tên tài khoản",
+        "selector": "#reg-username",
+        "visible": false,
+        "required": true,
+        "value": ""
+      },
+      {
+        "type": "password",
+        "name": "reg-password",
+        "placeholder": "Đặt mật khẩu",
+        "selector": "#reg-password",
+        "visible": false,
+        "required": true,
+        "value": ""
+      },
+      {
+        "type": "file",
+        "name": "image-upload",
+        "placeholder": "",
+        "selector": "#image-upload",
+        "visible": false,
+        "required": false,
+        "value": ""
+      }
+    ],
+    "links": [],
+    "forms": [
+      {
+        "selector": "#form-login",
+        "action": "",
+        "method": "get",
+        "visible": true
+      },
+      {
+        "selector": "#form-register",
+        "action": "",
+        "method": "get",
+        "visible": false
+      }
+    ]
+  },
+  "fingerprint": "150c5d5d",
+  "slug": "login-150c5d5d",
+  "screenshot": "screenshots/login-150c5d5d.png",
+  "pageFile": "pages/login-150c5d5d.json"
+}
