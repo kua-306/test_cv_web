@@ -34,7 +34,23 @@ MODEL_DIR = 'modelv2'
 CLASS_NAMES = ['Mèo (Cat)', 'Gà (Chicken)', 'Bò (Cow)', 'Chó (Dog)', 'Ngựa (Horse)']
 IMG_SIZE = 224
 
-app = FastAPI()
+# 1. Định nghĩa hàm khởi tạo DB bất đồng bộ
+async def init_db():
+    async with engine.begin() as conn:
+        # Lệnh này giúp chạy hàm create_all (vốn là đồng bộ) 
+        # trong môi trường bất đồng bộ của aiosqlite
+        await conn.run_sync(models.Base.metadata.create_all)
+
+# 2. Gọi hàm này khi FastAPI khởi động
+from contextlib import asynccontextmanager
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Khởi tạo bảng khi server bắt đầu chạy
+    await init_db()
+    yield
+
+app = FastAPI(lifespan=lifespan)
 #cho phep goi api
 app.add_middleware(
     CORSMiddleware,
@@ -60,23 +76,6 @@ def validate_image(file: UploadFile):
             detail=f'File quá lớn'
         )
 
-# 1. Định nghĩa hàm khởi tạo DB bất đồng bộ
-async def init_db():
-    async with engine.begin() as conn:
-        # Lệnh này giúp chạy hàm create_all (vốn là đồng bộ) 
-        # trong môi trường bất đồng bộ của aiosqlite
-        await conn.run_sync(models.Base.metadata.create_all)
-
-# 2. Gọi hàm này khi FastAPI khởi động
-from contextlib import asynccontextmanager
-
-@asynccontextmanager
-async def lifespan(app: FastAPI):
-    # Khởi tạo bảng khi server bắt đầu chạy
-    await init_db()
-    yield
-
-app = FastAPI(lifespan=lifespan)
 serving_fn = None
 if os.path.exists(MODEL_DIR):
     try:
