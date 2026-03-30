@@ -32,6 +32,16 @@ jobs:
           npx playwright install --with-deps chromium
           node auth.js
           npx playwright test tests/unhappy.spec.js
+      - name: Upload Screenshots and Logs
+        if: always() # <--- DÒNG NÀY LÀ SỐNG CÒN!
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-artifacts # Tên cái file zip bạn sẽ tải về
+          path: |
+            output/
+            server.log
+            playwright-report/
+          retention-days: 7
       # - name: Run Test Happy case
       #   run: |
       #     npx playwright test tests/generated-from-testcase.spec.js
