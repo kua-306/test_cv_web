@@ -34,6 +34,18 @@ MODEL_DIR = 'modelv2'
 CLASS_NAMES = ['Mèo (Cat)', 'Gà (Chicken)', 'Bò (Cow)', 'Chó (Dog)', 'Ngựa (Horse)']
 IMG_SIZE = 224
 
+serving_fn = None
+if os.path.exists(MODEL_DIR):
+    try:
+        loaded_model = tf.saved_model.load(MODEL_DIR)
+        serving_fn = loaded_model.signatures['serving_default']
+        print("TẢI MODEL THÀNH CÔNG!")
+    except Exception as e:
+        print("\nLỖI TẢI MODEL:")
+        print(str(e))
+else:
+    print(f"\nLỖI: Không tìm thấy thư mục '{MODEL_DIR}'")
+
 # 1. Định nghĩa hàm khởi tạo DB bất đồng bộ
 async def init_db():
     async with engine.begin() as conn:
@@ -76,17 +88,6 @@ def validate_image(file: UploadFile):
             detail=f'File quá lớn'
         )
 
-serving_fn = None
-if os.path.exists(MODEL_DIR):
-    try:
-        loaded_model = tf.saved_model.load(MODEL_DIR)
-        serving_fn = loaded_model.signatures['serving_default']
-        print("TẢI MODEL THÀNH CÔNG!")
-    except Exception as e:
-        print("\nLỖI TẢI MODEL:")
-        print(str(e))
-else:
-    print(f"\nLỖI: Không tìm thấy thư mục '{MODEL_DIR}'")
 
 def preprocess_image(image: Image.Image, target_size: tuple):
     if image.mode != "RGB":
