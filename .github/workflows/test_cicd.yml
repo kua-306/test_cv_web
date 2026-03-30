@@ -24,7 +24,7 @@ jobs:
         # Chỉ định luôn là làm việc trong thư mục api
         working-directory: ./api 
         run: |
-          nohup python -m uvicorn api:app --host 127.0.0.1 --port 8000 > server.log 2>&1 &
+          nohup python -u -m uvicorn api:app --host 127.0.0.1 --port 8000 > server.log 2>&1 &
           timeout 300s sh -c 'until grep -q "Application startup complete" server.log; do sleep 2; done' || true
           cat server.log
       - name: Run Test Unhappy case

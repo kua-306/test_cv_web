@@ -28,8 +28,9 @@ from schemas import UserBase,History,Token
 
 
 
-#Chon model
-MODEL_DIR = 'modelv2'
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_DIR = os.path.join(BASE_DIR, 'modelv2')
 #Dat ten class
 CLASS_NAMES = ['Mèo (Cat)', 'Gà (Chicken)', 'Bò (Cow)', 'Chó (Dog)', 'Ngựa (Horse)']
 IMG_SIZE = 224
